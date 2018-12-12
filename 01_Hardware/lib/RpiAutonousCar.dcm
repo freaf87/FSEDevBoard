@@ -1,0 +1,13 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP BSS138PS
+D MOSFET 2N-CH 60V 0.32A 6TSSOP
+K 2 N-Kanal
+F https://assets.nexperia.com/documents/data-sheet/BSS138PS.pdf
+$ENDCMP
+#
+$CMP RaspberryPi
+D Raspberry Pi
+$ENDCMP
+#
+#End Doc Library
