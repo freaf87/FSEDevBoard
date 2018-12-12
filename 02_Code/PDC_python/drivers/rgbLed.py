@@ -42,24 +42,23 @@ class RGB_LED(GPIO_Manager):
     def setBChannelPWM(self,dutyCycle):
         self.pwmDriver.setPwmFromDutyCycle(self._BChannel, dutyCycle)
 
+    def setRGBDutycycles(self, dutyCycleRChannel, dutyCycleGChannel, dutyCycleBChannel):
+        self.setRChannelPWM(dutyCycleRChannel)
+        self.setGChannelPWM(dutyCycleGChannel)
+        self.setBChannelPWM(dutyCycleBChannel)
+
 if __name__ == "__main__":
      with RGB_LED() as rgbLed:
          try:
              rgbLed.pwmDriver.setPwmFreq(60)
              while True:
-                    rgbLed.setRChannelPWM(2)
-                    rgbLed.setGChannelPWM(0)
-                    rgbLed.setBChannelPWM(0)
+                    rgbLed.setRGBDutycycles(2, 0, 0)
                     time.sleep(0.5)
 
-                    rgbLed.setRChannelPWM(0)
-                    rgbLed.setGChannelPWM(2)
-                    rgbLed.setBChannelPWM(0)
+                    rgbLed.setRGBDutycycles(0, 2, 0)
                     time.sleep(0.5)
 
-                    rgbLed.setRChannelPWM(0)
-                    rgbLed.setGChannelPWM(0)
-                    rgbLed.setBChannelPWM(2)
+                    rgbLed.setRGBDutycycles(0, 0, 2)
                     time.sleep(0.5)
 
          except KeyboardInterrupt:
