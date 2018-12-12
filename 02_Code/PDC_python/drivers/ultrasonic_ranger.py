@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# This file is part of FSE 2017.
+# This file is part of FSE 2019.
 #
-# FSE 2017 is free software: you can redistribute it and/or modify
+# FSE 2019 is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
@@ -13,7 +13,7 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with FSE 2017.  If not, see <http://www.gnu.org/licenses/>.
+# along with FSE 2019.  If not, see <http://www.gnu.org/licenses/>.
 
 """Driver for GPIO ultrasonic sensor."""
 

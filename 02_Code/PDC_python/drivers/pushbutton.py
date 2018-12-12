@@ -15,30 +15,34 @@
 # You should have received a copy of the GNU General Public License
 # along with FSE 2019.  If not, see <http://www.gnu.org/licenses/>.
 
-"""Bookkeeper for GPIO devices."""
+"""Driver for a pushbutton."""
+
+import time
 
 import wiringpi
+from gpio_manager import GPIO_Manager
 
 
-class GPIO_Manager(object):
-    """A manager to bundle bookkeeping work with GPIO pins."""
+class PUSHBUTTON(GPIO_Manager):
+    """Driver for an LED connected by GPIO."""
 
-    devices = []
-    # To be implemented by subclasses
-    _pins = []
+    _pin = 25
+    _pins = [_pin]
 
     def __init__(self):
-        """Perform GPIO setup if necessary."""
-        if not self.devices:
-            wiringpi.wiringPiSetupGpio()
-        self.devices.append(self)
+        super(PUSHBUTTON, self).__init__()
+        wiringpi.pinMode(self._pin, wiringpi.OUTPUT)
+        self.state = False
 
-    def __enter__(self):
-        return self
+    def PBStatus(self):
+        return wiringpi.digitalRead(self._pin)
 
-    def __exit__(self, *args):
-        """Cleanup GPIOs if necessary."""
-        self.devices.remove(self)
-        for pin in self._pins:
-            wiringpi.digitalWrite(pin, wiringpi.LOW)
-            wiringpi.pinMode(pin, wiringpi.INPUT)
+
+if __name__ == "__main__":
+    while True:
+        if PBStatus == False:
+            # do something button pressed
+            pass
+        else:
+            pass
+        time.sleep(0.5)
