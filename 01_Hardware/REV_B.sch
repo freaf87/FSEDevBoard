@@ -2369,4 +2369,6 @@ Wire Wire Line
 Wire Wire Line
 	1800 6825 1800 6725
 Connection ~ 1800 6825
+Wire Wire Line
+	1800 7250 1800 7325
 $EndSCHEMATC
