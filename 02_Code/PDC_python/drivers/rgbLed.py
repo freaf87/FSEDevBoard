@@ -15,19 +15,14 @@
 # You should have received a copy of the GNU General Public License
 
 
-from gpio_manager import GPIO_Manager
 from PCA9685 import PWM_Driver
 import os
 import time
 import sys
-import logging
 
-logger = logging.getLogger(__name__)
-
-class RGB_LED(GPIO_Manager):
+class RGB_LED():
     """ Interface class for FSEDevBoard onboard LED """
     def __init__(self):
-        super(RGB_LED, self).__init__()
         self._RChannel = 13
         self._GChannel = 14
         self._BChannel = 15
@@ -47,10 +42,18 @@ class RGB_LED(GPIO_Manager):
         self.setGChannelPWM(dutyCycleGChannel)
         self.setBChannelPWM(dutyCycleBChannel)
 
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *args):
+        rgbLed.setRChannelPWM(0)
+        rgbLed.setGChannelPWM(0)
+        rgbLed.setBChannelPWM(0)
+
 if __name__ == "__main__":
      with RGB_LED() as rgbLed:
          try:
-             rgbLed.pwmDriver.setPwmFreq(60)
+             rgbLed.pwmDriver.setPwmFreq(600)
              while True:
                     rgbLed.setRGBDutycycles(2, 0, 0)
                     time.sleep(0.5)
@@ -66,6 +69,3 @@ if __name__ == "__main__":
          except:
             print("Unexpected error:", sys.exc_info()[0])
             raise
-         finally:
-             rgbLed.pwmDriver.setAllPwm(0,0)
-
