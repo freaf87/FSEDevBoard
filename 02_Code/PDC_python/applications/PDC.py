@@ -19,9 +19,9 @@
 """Robot interface combining ultrasonic, LED and motor drivers."""
 
 import time
-from buzzer import BUZZER
-from rgbLed import RGBLED
-from hcsr04 import HCSR04, UltrasonicTimeoutError
+from ..drivers.buzzer import BUZZER
+from ..drivers.rgbLed import RGBLED
+from ..drivers.hcsr04 import HCSR04, UltrasonicTimeoutError
 
 class PDC(object):
     """ PDC class """
