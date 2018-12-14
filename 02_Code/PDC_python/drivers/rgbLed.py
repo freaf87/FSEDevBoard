@@ -15,12 +15,12 @@
 # You should have received a copy of the GNU General Public License
 
 
-from PCA9685 import PWM_Driver
+from pca9685 import PWM_Driver
 import os
 import time
 import sys
 
-class RGB_LED():
+class RGBLED():
     """ Interface class for FSEDevBoard onboard LED """
     def __init__(self):
         self._RChannel = 13
@@ -46,12 +46,12 @@ class RGB_LED():
         return self
 
     def __exit__(self, *args):
-        rgbLed.setRChannelPWM(0)
-        rgbLed.setGChannelPWM(0)
-        rgbLed.setBChannelPWM(0)
+        self.setRChannelPWM(0)
+        self.setGChannelPWM(0)
+        self.setBChannelPWM(0)
 
 if __name__ == "__main__":
-     with RGB_LED() as rgbLed:
+     with RGBLED() as rgbLed:
          try:
              rgbLed.pwmDriver.setPwmFreq(600)
              while True:

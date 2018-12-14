@@ -26,7 +26,7 @@ class UltrasonicTimeoutError(Exception):
     """UltrasonicRanger does not measure response to ping."""
 
 
-class UltrasonicRanger(GPIO_Manager):
+class HCSR04(GPIO_Manager):
     """Interface with an HCSR04 ultrasonic range sensor."""
 
     _trigger_pin = 15
@@ -36,9 +36,15 @@ class UltrasonicRanger(GPIO_Manager):
     _average_count = 1
 
     def __init__(self):
-        super(UltrasonicRanger, self).__init__()
+        super(HCSR04, self).__init__()
         wiringpi.pinMode(self._trigger_pin, wiringpi.OUTPUT)
         wiringpi.pinMode(self._echo_pin, wiringpi.INPUT)
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *args):
+        return self
 
     @property
     def distance(self):
@@ -84,7 +90,7 @@ class UltrasonicRanger(GPIO_Manager):
 
 
 if __name__ == "__main__":
-    with UltrasonicRanger() as ultrasonic:
+    with HCSR04() as ultrasonic:
         while True:
             try:
                 dis = ultrasonic.average_distance
