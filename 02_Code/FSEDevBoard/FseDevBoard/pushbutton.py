@@ -16,9 +16,11 @@
 # along with FSE 2019.  If not, see <http://www.gnu.org/licenses/>.
 
 """Driver for a pushbutton."""
+import sys
+from os.path import dirname
+sys.path.append(dirname(__file__))
 
 import time
-
 import wiringpi
 from gpio_manager import GPIO_Manager
 

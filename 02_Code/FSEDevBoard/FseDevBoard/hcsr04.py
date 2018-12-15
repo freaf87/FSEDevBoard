@@ -16,6 +16,9 @@
 # along with FSE 2019.  If not, see <http://www.gnu.org/licenses/>.
 
 """Driver for GPIO ultrasonic sensor."""
+import sys
+from os.path import dirname
+sys.path.append(dirname(__file__))
 
 import time
 import wiringpi

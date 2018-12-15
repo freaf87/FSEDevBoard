@@ -13,10 +13,12 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
+import sys
+from os.path import dirname
+sys.path.append(dirname(__file__))
 
 
 from pca9685 import PWM_Driver
-import os
 import time
 import sys
 

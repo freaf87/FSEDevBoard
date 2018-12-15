@@ -16,8 +16,10 @@
 # along with FSE 2019.  If not, see <http://www.gnu.org/licenses/>.
 
 """Driver for 2 TB6612FNG DC motors mounted to a single chassis."""
+import sys
+from os.path import dirname
+sys.path.append(dirname(__file__))
 
-import os
 import time
 import wiringpi
 from gpio_manager import GPIO_Manager

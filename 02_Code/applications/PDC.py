@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # This file is part of FSE 2019.
@@ -18,11 +17,14 @@
 
 """Robot interface combining ultrasonic, LED and motor drivers."""
 
-import time
 import sys
-from  FSEDevBoard.drivers.rgbLed import RGBLED
-from  FSEDevBoard.drivers.buzzer import BUZZER
-from  FSEDevBoard.drivers.hcsr04 import HCSR04, UltrasonicTimeoutError
+from os.path import dirname
+sys.path.append(dirname(__file__))
+
+import time
+from  FseDevBoard.rgbLed import RGBLED
+from  FseDevBoard.buzzer import BUZZER
+from  FseDevBoard.hcsr04 import HCSR04, UltrasonicTimeoutError
 
 class PDC(object):
     """ PDC class """

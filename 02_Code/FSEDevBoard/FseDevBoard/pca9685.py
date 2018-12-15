@@ -13,12 +13,15 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-
-from smbus import SMBus
-from gpio_manager import GPIO_Manager
-import os
-import time
 import sys
+from os.path import dirname
+sys.path.append(dirname(__file__))
+
+from smbus2 import SMBus
+from gpio_manager import GPIO_Manager
+#import os
+import time
+#import sys
 import logging
 import math
 
