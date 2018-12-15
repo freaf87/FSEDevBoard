@@ -31,6 +31,7 @@ class PDC(object):
     def __init__(self):
         self.ultrasonic = HCSR04()
         self.rgbled = RGBLED()
+        self.buzzer = BUZZER()
         self.rgbled.pwmDriver.setPwmFreq(600)
 
     def setPDCColor(self, color):
@@ -46,6 +47,7 @@ class PDC(object):
         """Release internally used resources."""
         self.ultrasonic.__exit__()
         self.rgbled.__exit__()
+        self.buzzer.__exit__()
 
     @property
     def getDistance(self):
@@ -68,7 +70,7 @@ class PDC(object):
             arg_g = 25.5 * dist - 127.5
             return  (255,arg_g,0)
         else:
-            return (0,0,0)
+            return (255,0,0)
 
     @property
     def hex_to_rgb(hex_value):
@@ -82,7 +84,9 @@ if __name__ == "__main__":
         while True:
             dist = pdc.getDistance
             if dist is not None:
+                if dist <=30 and dist >=1:
+                    pdc.buzzer.buzzForTime(dist*0.02)
                 pdc.setPDCColor(pdc.dist2color(dist))
-                print(dist)
+                print("distance = {0} cm".format(dist))
 
 
