@@ -32,14 +32,14 @@ class UltrasonicTimeoutError(Exception):
 class HCSR04(GPIO_Manager):
     """Interface with an HCSR04 ultrasonic range sensor."""
 
-    _trigger_pin = 15
-    _echo_pin = 14
-    _pins = [_trigger_pin, _echo_pin]
     _timeout = 0.1  # seconds
     _average_count = 1
 
-    def __init__(self):
+    def __init__(self, triggerPin = 15, echoPin = 14):
         super(HCSR04, self).__init__()
+        self._trigger_pin = triggerPin #15
+        self._echo_pin = echoPin       #14
+        self._pins = [self._trigger_pin, self._echo_pin]
         wiringpi.pinMode(self._trigger_pin, wiringpi.OUTPUT)
         wiringpi.pinMode(self._echo_pin, wiringpi.INPUT)
 

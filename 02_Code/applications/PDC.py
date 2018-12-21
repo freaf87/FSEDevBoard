@@ -31,7 +31,7 @@ class PDC(object):
     def __init__(self):
         self.ultrasonic = HCSR04()
         self.rgbled = RGBLED()
-        self.buzzer = BUZZER()
+        self.buzzer = BUZZER(21)
         self.rgbled.pwmDriver.setPwmFreq(600)
 
     def setPDCColor(self, color):

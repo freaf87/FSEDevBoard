@@ -28,11 +28,10 @@ from time import sleep
 class BUZZER(GPIO_Manager):
     """Driver for a BUZZER connected by GPIO."""
 
-    _pin = 17
-    _pins = [_pin]
-
-    def __init__(self):
+    def __init__(self, pin = 21):
         super(BUZZER, self).__init__()
+        self._pin = pin
+        self._pins = [self._pin]
         wiringpi.pinMode(self._pin, wiringpi.OUTPUT)
 
     def buzzerHigh(self):
@@ -48,7 +47,7 @@ class BUZZER(GPIO_Manager):
         sleep(time)
 
 if __name__ == "__main__":
-    with BUZZER() as buzzer:
+    with BUZZER(21) as buzzer:
         while True:
             for i in list(range(40,0,-1)):
                 print ("distance = {0} cm".format(i))

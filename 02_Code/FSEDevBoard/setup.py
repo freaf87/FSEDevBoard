@@ -9,7 +9,7 @@ setup(
     url='https://fullstackembedded.com',
     license='LICENSE.txt',
     description='Drivers for FSEDevBoard used in FSE workshops.',
-    long_description=open('README.md').read(),
+    long_description=open('README.txt').read(),
     install_requires=[
         "smbus2",
         "wiringpi",

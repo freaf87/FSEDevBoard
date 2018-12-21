@@ -9,4 +9,4 @@ Typical usage::
 
 Contributors
 ============
-Daniel Lee, Frederic Afadjigla
+Frederic Afadjigla
