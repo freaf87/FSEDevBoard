@@ -1,0 +1,85 @@
+\documentclass[
+10pt, % Main document font size
+a4paper, % Paper type, use 'letterpaper' for US Letter paper
+oneside, % One page layout (no page indentation)
+%twoside, % Two page layout (page indentation for binding and different headers)
+headinclude,footinclude, % Extra spacing for the header and footer
+BCOR=5mm, % Binding correction
+table,
+]{scrartcl}
+
+\input{structure.tex} % Include the structure.tex file which specified the document structure and layout
+
+\hyphenation{Fortran hy-phen-ation} % Specify custom hyphenation points in words with dashes where you would like hyphenation to occur, or alternatively, don't put any dashes in a word to stop hyphenation altogether
+
+%----------------------------------------------------------------------------------------
+%	TITLE AND AUTHOR(S)
+%----------------------------------------------------------------------------------------
+
+\title{\normalfont\spacedallcaps{\textbf{FSE Development Board}} \\[2ex] \LARGE\spacedallcaps{Reference Manual}} % The article title
+\author{\spacedlowsmallcaps{Frederic Afadjigla}} 
+%\date{\small{(\today)}} 
+\date{\small{Decembre 22, 2018}} 
+%----------------------------------------------------------------------------------------
+
+
+\begin{document}
+%----------------------------------------------------------------------------------------
+%	HEADERS
+%----------------------------------------------------------------------------------------
+
+\renewcommand{\sectionmark}[1]{\markright{\spacedlowsmallcaps{#1}}} % The header for all pages (oneside) or for even pages (twoside)
+%\renewcommand{\subsectionmark}[1]{\markright{\thesubsection~#1}} % Uncomment when using the twoside option - this modifies the header on odd pages
+\lehead{\mbox{\llap{\small\thepage\kern1em\color{halfgray} \vline}\color{halfgray}\hspace{0.5em}\rightmark\hfil}} % The header style
+\pagestyle{scrheadings} % Enable the headers specified in this block
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+\makeatletter
+\def\@maketitle {
+	\raggedright
+	%\includegraphics[width = 40mm]{logoBW}\\[8ex]
+	\begin{center}
+		{\huge \bfseries \sffamily \@title }\\[4ex] 
+		{\Large  \@author}\\[1ex] 
+		\@date\\[8ex]
+		\includegraphics[width = 40mm]{logoBW} \\[20ex] 
+		\end{center}
+}
+\makeatother
+\thispagestyle{empty}
+
+%Add content for page two here (useful for two-sided printing)
+\thispagestyle{empty}
+\newpage
+\maketitle % Print the title/author/date block
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS & LISTS OF FIGURES AND TABLES
+%----------------------------------------------------------------------------------------
+\setcounter{tocdepth}{2} % Set the depth of the table of contents to show sections and subsections only
+
+\tableofcontents % Print the table of contents
+\listoffigures % Print the list of figures
+\listoftables % Print the list of tables
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+\section*{Abstract} % This section will not appear in the table of contents due to the star (\section*)
+The purpose of this document is to give the reader an overview about the FSEDevBoard's hardware. This plattform will be use during FSE workshops. Principal hardware components of the board and interfaces will be briefly described.
+
+%
+\newpage
+%
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+
+\section{Introduction}
+
+
+\end{document}
+
