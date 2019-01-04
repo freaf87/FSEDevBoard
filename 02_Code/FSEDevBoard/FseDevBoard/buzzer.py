@@ -28,7 +28,7 @@ from time import sleep
 class BUZZER(GPIO_Manager):
     """Driver for a BUZZER connected by GPIO."""
 
-    def __init__(self, pin = 21):
+    def __init__(self, pin = 4):
         super(BUZZER, self).__init__()
         self._pin = pin
         self._pins = [self._pin]
