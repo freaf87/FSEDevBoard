@@ -33,18 +33,16 @@ class PUSHBUTTON(GPIO_Manager):
 
     def __init__(self):
         super(PUSHBUTTON, self).__init__()
-        wiringpi.pinMode(self._pin, wiringpi.OUTPUT)
+        wiringpi.pinMode(self._pin, wiringpi.INPUT)
         self.state = False
 
-    def PBStatus(self):
+    def getPBStatus(self):
         return wiringpi.digitalRead(self._pin)
 
 
 if __name__ == "__main__":
-    while True:
-        if PBStatus == False:
-            # do something button pressed
-            pass
-        else:
-            pass
-        time.sleep(0.5)
+    with PUSHBUTTON() as PB:
+        while True:
+            if PB.getPBStatus() == False:
+                print("Pushbutton pressed...")
+            time.sleep(0.25)
