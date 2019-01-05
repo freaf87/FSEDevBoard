@@ -17,6 +17,7 @@
 
 """Driver for 2 TB6612FNG DC motors mounted to a single chassis."""
 import sys
+import os
 from os.path import dirname
 sys.path.append(dirname(__file__))
 
@@ -28,27 +29,23 @@ from gpio_manager import GPIO_Manager
 class MotorDriver(GPIO_Manager):
     """Interface with 2 TB6612FNG DC Motor drivers."""
     # Configure motor 1
-    _m1_dir1_pin = 6
-    _m1_dir2_pin = 12
-    _m1_pwm_pin_annex = 5  # solve error mapping (Vers.01)
-    _m1_pwm_pin = 18
+    _m1_dir1_pin = 19
+    _m1_dir2_pin = 16
+    _m1_pwm_pin  = 12
 
     # Configure motor 2
-    _m2_dir1_pin = 19
-    _m2_dir2_pin = 16
-    _m2_pwm_pin_annex = 26  # solve error mapping (Vers.01)
+    _m2_dir1_pin = 26
+    _m2_dir2_pin = 20
     _m2_pwm_pin = 13
 
-    _standby_pin = 20
+    _standby_pin = 21
 
     PWM_OUTPUTS = [_m1_pwm_pin, _m2_pwm_pin]
-
-    INPUT_PINS = [_m1_pwm_pin_annex, _m2_pwm_pin_annex]
 
     OUTPUT_PINS = [_m1_dir1_pin, _m1_dir2_pin,
                    _m2_dir1_pin, _m2_dir2_pin,
                    _standby_pin]
-    _pins = PWM_OUTPUTS + INPUT_PINS + OUTPUT_PINS
+    _pins = PWM_OUTPUTS + OUTPUT_PINS
 
     @staticmethod
     def to_dc(dc):
@@ -63,11 +60,6 @@ class MotorDriver(GPIO_Manager):
 
         for pin in self.PWM_OUTPUTS:
             wiringpi.pinMode(pin, wiringpi.PWM_OUTPUT)
-
-        for pin in self.INPUT_PINS:
-            wiringpi.pinMode(pin, wiringpi.INPUT)
-            # Make sure all annex_pin are set LOW
-            wiringpi.pullUpDnControl(pin, wiringpi.PUD_DOWN)
 
     def right_forward(self):
         """Drive right motor forward."""
@@ -138,28 +130,28 @@ if __name__ == '__main__':
     with MotorDriver() as tb6612fng:
         while True:
             print("forward")
-            tb6612fng.forward()
+            tb6612fng.forward(50)
             time.sleep(3)
 
             tb6612fng.stop()
             time.sleep(3)
 
             print("reverse")
-            tb6612fng.reverse()
+            tb6612fng.reverse(50)
             time.sleep(3)
 
             tb6612fng.stop()
             time.sleep(3)
 
             print("left")
-            tb6612fng.left()
+            tb6612fng.left(50)
             time.sleep(3)
 
             tb6612fng.stop()
             time.sleep(3)
 
             print("right")
-            tb6612fng.right()
+            tb6612fng.right(50)
             time.sleep(3)
 
             tb6612fng.stop()
