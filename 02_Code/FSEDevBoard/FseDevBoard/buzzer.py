@@ -47,7 +47,7 @@ class BUZZER(GPIO_Manager):
         sleep(time)
 
 if __name__ == "__main__":
-    with BUZZER(21) as buzzer:
+    with BUZZER(4) as buzzer:
         while True:
             for i in list(range(40,0,-1)):
                 print ("distance = {0} cm".format(i))
