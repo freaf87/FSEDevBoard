@@ -44,7 +44,7 @@ table,
 		{\huge \bfseries \sffamily \@title }\\[4ex] 
 		{\Large  \@author}\\[1ex] 
 		\@date\\[8ex]
-		\includegraphics[width = 40mm]{logoBW} \\[20ex] 
+		\includegraphics[width = 40mm]{logo} \\[20ex] 
 		\end{center}
 }
 \makeatother
@@ -254,8 +254,21 @@ L    & L   & H   & OFF  & OFF  & Stop\\
 %	The Raspberry Pi pinout
 %----------------------------------------------------------------------------------------
 \section{The Raspberry Pi pinout}
-The Raspberry Pi's GPIOs can be accessed over a standard male header on the board. Over the years the header expanded from 26 to 40 pins.There are 2 different numbering schemes you may encounter when referencing Pi pin numbers: (1) Broadcom chip-specific pin numbers and (2) P1 physical pin numbers. You’re usually free to use either number-system, but many programs require that you declare which scheme you’re using at the very beginning of your program. 
+
+The Raspberry Pi is a credit card-sized minicomputer with a pre-installed Linux system. As for ports, the Raspberry Pi provides ports for mouse and keyboard. In addition, there are also ports for SD card and HDMI display. Being low cost and low consumption, the Raspberry Pi is very suitable to do very complicated embedded projects through its powerful GPIO (General-purpose input/output) pins. The Raspberry Pi's GPIOs can be accessed over a standard male header on the board. Over the years the header expanded from 26 to 40 pins.There are 2 different numbering schemes you may encounter when referencing Pi pin numbers: (1) Broadcom chip-specific pin numbers and (2) P1 physical pin numbers. You’re usually free to use either number-system, but many programs require that you declare which scheme you’re using at the very beginning of your program. 
+
+The Official name of a GPIO pin normally matches BCM pin number. For example, Physical Pin 7 (described in Table \ref{table:Raspberry Pi Pinout} 's column Pin Nbr) official name is GPIO 04 , in BCM system is pin\# 4.
+
 Green areas in Table \ref{table:Raspberry Pi Pinout} are representing free GPIOs which are not connected to anything on the FSEDevBoard. Therefore, you can safely add some new connections to those pins
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{RPiZero} 
+\caption[RPiZero]{RPiZero}
+\label{fig:RPiZero}
+\end{figure}
+
+
 
 \begin{table}[H]
 \centering
