@@ -1,8 +1,7 @@
 # FSEDevBoard package
 
 ## Installing
-      % sudo apt install python3 python3-pip
-      % pip3 install virtualenv
+      % sudo apt install python3 python3-pip python-virtualenv
       % virtualenv venv -p python3
       % source venv/bin/activate
 
